@@ -1,0 +1,17 @@
+
+var u = User(id:1, name:"Bryan", password:"Hola Mundo")
+var m = ElectricMeter(idMeter:1, type:"last", rate:123.2, consumption:212.1)
+var r = Register(idRegister:1, idMeter:1, pending:true, paidAmount:0.0,pendingAmout:1230.21)
+var a = Appeal(idAppeal:1, situation:"Muy caro", attended:false, register:r)
+var c = Client(id:2, name:"C1", password:"p1")
+var aS = AgentService(id:1, name:"AS1", password:"p2")
+print("USUARIO:",u.description)
+m.addRegister(value:r)
+print("MEDIDOR: ",m.description)
+print("REGISTRO: ",r.description)
+print("APELACION: ", a.description)
+c.addMeter(meter:m)
+print("CLIENTE: ",c.description)
+print("AGENTE: ",aS.description)
+aS.checkMeters()
+
