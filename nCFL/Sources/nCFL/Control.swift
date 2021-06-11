@@ -1,16 +1,16 @@
-class DataBase{
+class Control{
     init(){
     }
-    public func getClients(){
+    public func getClients()->[Client]{
         print("Aca importo clientes")
     }
-    public func getMeters(){
+    public func getMeters()->[Meters]{
         print("Aca importo medidores")
     }
-    public func getAgents(){
+    public func getAgents()->[AgentService]{
         print("Aca importo agentes")
     }
-    public func getRegisters(){
+    public func getRegisters()->[ElectricMeter]{
         print("Aca importo registros")
     }
 }
