@@ -1,4 +1,6 @@
+/*
 class Control{
+
     init(){
     }
     public func getClients()->[Client]{
@@ -14,3 +16,4 @@ class Control{
         print("Aca importo registros")
     }
 }
+*/
