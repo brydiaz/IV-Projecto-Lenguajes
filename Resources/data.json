@@ -1,0 +1,29 @@
+{
+    "clients": [
+      {
+        "id": 1,
+        "name": "Krish",
+        "password": "123456"
+      },
+      {
+        "id": 2,
+        "name": "Carlos",
+        "password": "123456"
+      },
+      {
+        "id": 3,
+        "name": "Esteban",
+        "password": "3333"
+      },
+      {
+        "id": 4,
+        "name": "David",
+        "password": "2222"
+      },
+      {
+        "id": 5,
+        "name": "jone",
+        "password": "1111"
+      }
+    ]
+  }

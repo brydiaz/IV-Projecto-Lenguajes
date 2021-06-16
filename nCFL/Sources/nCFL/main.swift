@@ -9,16 +9,11 @@ var registersJSON:[[String:Any]] = control.getDataJson(value:"Registers")
 var metersJSON:[[String:Any]] = control.getDataJson(value:"Meters")
 
 
+var registers:[Register] = control.getRegisters(value:registersJSON)
+var meters:[ElectricMeter] = control.getMeters(value:metersJSON, value2:registers)
+var agents:[AgentService] = control.getAgents(value:agentsJSON)
+var appeals:[Appeal] = []
+var clients:[Client] = control.getClients(value:clientsJSON, value2:meters)
 
-
-print(clientsJSON)
-print("\n")
-print(agentsJSON)
-print("\n")
-print(registersJSON)
-print("\n")
-print(metersJSON)
-
- 
 
 

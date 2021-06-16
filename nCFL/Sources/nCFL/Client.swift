@@ -17,6 +17,10 @@ class Client:User{
         return self.metersIds
     }
 
+    public func setMetersIds(value:[Int]){
+        self.metersIds = value
+    }
+
     public func addMeterIds(meter:Int){
         self.metersIds.append(meter)
     }

@@ -15,8 +15,9 @@ class ElectricMeter{
     public init(idMeter:Int, type:String, consumption:Double){
         self.idMeter = idMeter
         self.type = type
-        self.rate = calculateRate(meterType:type)
         self.consumption = consumption
+        self.rate = calculateRate(meterType:type)
+        
     }
 
     public func getId()->Int{
@@ -68,8 +69,71 @@ class ElectricMeter{
     }
 
     public func calculateRate(meterType:String)->Double{
-        print("Aca dependiendo del tipo se calcula cual será la tarifa")
-        return 777.77
+        switch meterType {
+            case "T-REH:PUNTA":
+                if self.consumption < 500{
+                    return 153.14
+                }else{
+                    return 189.34
+                }
+            case "T-REH:VALLE":
+                if self.consumption < 500{
+                    return 62.78 
+                }else{
+                    return 76.42
+                }
+            case "T-REH:NOCHE":
+                if self.consumption < 500{
+                    return 26.28 
+                
+                }else{
+                    return 35.37
+                }
+
+            case "T-RE":
+
+                if self.consumption < 30{
+                    return 0.0
+                }else if (30<self.consumption && self.consumption<200){
+                    return 66.16
+                }else if (200<self.consumption && self.consumption<300){
+                    return 101.53
+                }else{
+                    return 104.93
+                }
+            case "T-AP":
+                return 3.22
+            case "T-IN":
+                return 111.79
+
+            case "T-MT:PUNTA":
+                return 57.02
+            case "T-MT:VALLE":
+                return 28.51
+            case "T-MT:NOCHE":
+                return 20.53
+            
+            case "T-MTb:PUNTA":
+                return 108.19
+            case "T-MTb:VALLE":
+                return 37.17
+            case "T-MTb:NOCHE":
+                return 23.86
+            
+            case "T-CS":
+                return 75.29
+            case "T-PRO":
+                return 111.79
+            case "T-CO":
+                return 111.79
+            case "T-A":
+                return 26.60
+
+                
+            default:
+                return 777.77  
+        }
+  
     }
 
     
