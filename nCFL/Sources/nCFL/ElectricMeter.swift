@@ -33,7 +33,7 @@ class ElectricMeter{
     }
 
     public func getConsumption()->Double{
-        return self.getConsumption()
+        return self.consumption
     }
 
     public func getRegisters()->[Register]{
@@ -59,13 +59,16 @@ class ElectricMeter{
     public func addRegister(value:Register){
         self.registers.append(value)
     }
-    public func showRegisters()-> String{
-        var str = " REGISTROS ASOCIADOS:\n"
+
+    public func showRegisters()-> Void{
+        print("\n**REGISTROS ASOCIADOS**\n")
         for i in self.registers{
-            str += " - "
-            str += i.description 
-        }
-        return str
+            print("ID REGISTRO: \(i.getIdRegister())")
+            print("ID MEDIDOR: \(i.getIdMeter())")
+            print("PENDIENTE: \(i.getPending())")
+            print("MONTO PAGADO: \(i.getPaidAmount())")
+            print("MONTO PENDIENTE: \(i.getPendingAmout())\n")
+        } 
     }
 
     public func calculateRate(meterType:String)->Double{
