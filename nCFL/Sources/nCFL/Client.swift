@@ -14,11 +14,11 @@ class Client:User{
     }
 
     public func getMetersIds()->[Int]{
-        return self.meters
+        return self.metersIds
     }
 
-    public func addMeter(meter:Int){
-        self.meters.append(meter)
+    public func addMeterIds(meter:Int){
+        self.metersIds.append(meter)
     }
 
     public func checkOwnRegisters()-> String{

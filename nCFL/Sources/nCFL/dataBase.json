@@ -1,126 +1,126 @@
 {
-    "Clients":{
-        "c1":{
+    "Clients":[
+        {
             "id":1,
             "name":"Bryan",
             "password":"p1",
             "metersId":[1,2]
         },
-        "c2":{
+        {
             "id":2,
             "name":"Josue",
             "password":"p2",
             "metersId":[3,4]
         },
-        "c3":{
+        {
             "id":3,
             "name":"Alex",
             "password":"p3",
             "metersId":[5,6]
         },
-        "c4":{
+        {
             "id":4,
             "name":"Jesus",
             "password":"p4",
             "metersId":[7,8]
         },
-        "c5":{
+        {
             "id":5,
             "name":"Karolina",
             "password":"p5",
             "metersId":[9,10]
         }
 
-    },
-    "Agents":{
-        "a1":{
+    ],
+    "Agents":[
+        {
             "id":1,
             "name":"Carlos",
             "password":"p1"
         },
-        "a2":{
+        {
             "id":2,
             "name":"Cris",
             "password":"p2"
         },
-        "a3":{
+        {
             "id":3,
             "name":"Elia",
             "password":"p3"
         },
-        "a4":{
+        {
             "id":4,
             "name":"Natasha",
             "password":"p4"
         },
-        "a5":{
+        {
             "id":5,
             "name":"Andres",
             "password":"p5"
         }
 
-    },
-    "Meters":{
-        "m1":{
+    ],
+    "Meters":[
+        {
             "idMeter":1,
             "type":"T-REH:PUNTA",
             "consumption": 213
         },
-        "m2":{
+        {
             "idMeter":2,
             "type":"T-RE",
             "consumption": 174
         },
-        "m3":{
+        {
             "idMeter":3,
             "type":"T-AP",
             "consumption": 1000
         },
-        "m4":{
+        {
             "idMeter":4,
             "type":"T-IN",
             "consumption": 2750
         },
-        "m5":{
+        {
             "idMeter":5,
             "type":"T-MT:VALLE",
             "consumption": 183
         },
-        "m6":{
+        {
             "idMeter":6,
             "type":"T-MTb:NOCHE",
             "consumption": 593
         },
-        "m7":{
+        {
             "idMeter":7,
             "type":"T-CS",
             "consumption": 1782
         },
-        "m8":{
+        {
             "idMeter":8,
             "type":"T-PRO",
             "consumption": 2555
         },
-        "m9":{
+        {
             "idMeter":9,
             "type":"T-CO",
             "consumption": 1532
         },
-        "m10":{
+        {
             "idMeter":10,
             "type":"T-A",
             "consumption": 1753
         }
-    },
-    "Registers":{
-        "r1":{
+    ],
+    "Registers":[
+        {
             "idRegister":1,
             "idMeter":1,
             "pending":0, 
             "paidAmount":1530.0,
             "pendingAmout":0.0
         },
-        "r2":{
+        {
             "idRegister":2,
             "idMeter":1,
             "pending":1, 
@@ -128,14 +128,14 @@
             "pendingAmout":1850.0
         },
 
-        "r3":{
+        {
             "idRegister":3,
             "idMeter":2,
             "pending":0, 
             "paidAmount":2530.0,
             "pendingAmout":0.0
         },
-        "r4":{
+        {
             "idRegister":4,
             "idMeter":2,
             "pending":1, 
@@ -143,14 +143,14 @@
             "pendingAmout":1850.0
         },
 
-        "r5":{
+        {
             "idRegister":5,
             "idMeter":3,
             "pending":0, 
             "paidAmount":2430.0,
             "pendingAmout":0.0
         },
-        "r6":{
+        {
             "idRegister":6,
             "idMeter":3,
             "pending":1, 
@@ -158,14 +158,14 @@
             "pendingAmout":1250.0
         },
 
-        "r7":{
+        {
             "idRegister":7,
             "idMeter":4,
             "pending":0, 
             "paidAmount":930.0,
             "pendingAmout":0.0
         },
-        "r8":{
+        {
             "idRegister":8,
             "idMeter":4,
             "pending":1, 
@@ -173,91 +173,91 @@
             "pendingAmout":1950.0
         },
         
-        "r9":{
+        {
             "idRegister":9,
             "idMeter":5,
             "pending":0, 
             "paidAmount":12930.0,
             "pendingAmout":0.0
         },
-        "r10":{
+        {
             "idRegister":10,
             "idMeter":5,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":23950.0
         },
-        "r11":{
+        {
             "idRegister":11,
             "idMeter":6,
             "pending":0, 
             "paidAmount":25930.0,
             "pendingAmout":0.0
         },
-        "r12":{
+        {
             "idRegister":12,
             "idMeter":6,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":17950.0
         },
-        "r13":{
+        {
             "idRegister":13,
             "idMeter":7,
             "pending":0, 
             "paidAmount":32930.0,
             "pendingAmout":0.0
         },
-        "r14":{
+        {
             "idRegister":14,
             "idMeter":7,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":37950.0
         },
-        "r15":{
+        {
             "idRegister":15,
             "idMeter":8,
             "pending":0, 
             "paidAmount":12930.0,
             "pendingAmout":0.0
         },
-        "r16":{
+        {
             "idRegister":16,
             "idMeter":8,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":17950.0
         },
-        "r17":{
+        {
             "idRegister":17,
             "idMeter":9,
             "pending":0, 
             "paidAmount":12750.0,
             "pendingAmout":0.0
         },
-        "r18":{
+        {
             "idRegister":16,
             "idMeter":9,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":17202.0
         },
-        "r19":{
+        {
             "idRegister":19,
             "idMeter":10,
             "pending":0, 
             "paidAmount":55000.0,
             "pendingAmout":0.0
         },
-        "r20":{
-            "idRegister":16,
-            "idMeter":9,
+        {
+            "idRegister":20,
+            "idMeter":10,
             "pending":1, 
             "paidAmount":0.0,
             "pendingAmout":54300.0
         }
 
 
-    }
+    ]
 }

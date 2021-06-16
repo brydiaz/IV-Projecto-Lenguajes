@@ -17,7 +17,7 @@ let package = Package(
             name: "nCFL",
             dependencies: [],
             resources: [
-                .process("data.json")]),
+                .process("dataBase.json")]),
         .testTarget(
             name: "nCFLTests",
             dependencies: ["nCFL"]),
