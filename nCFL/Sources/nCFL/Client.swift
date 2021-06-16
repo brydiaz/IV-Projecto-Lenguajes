@@ -1,6 +1,6 @@
 class Client:User{
     private var meters:[ElectricMeter] = []
-
+    private var metersIds:[Int] = []
     override var description:String{
         return "\(super.getId()), \(super.getName()), \(super.getPassword()), \n\(self.checkOwnRegisters())"
     }
@@ -10,6 +10,14 @@ class Client:User{
     }
 
     public func addMeter(meter:ElectricMeter){
+        self.meters.append(meter)
+    }
+
+    public func getMetersIds()->[Int]{
+        return self.meters
+    }
+
+    public func addMeter(meter:Int){
         self.meters.append(meter)
     }
 

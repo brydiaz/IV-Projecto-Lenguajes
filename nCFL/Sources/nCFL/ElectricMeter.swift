@@ -12,10 +12,10 @@ class ElectricMeter{
         return "\(idMeter),\(type),\(rate),\(consumption),\n\(self.showRegisters())"
     }
 
-    public init(idMeter:Int, type:String, rate:Double, consumption:Double){
+    public init(idMeter:Int, type:String, consumption:Double){
         self.idMeter = idMeter
         self.type = type
-        self.rate = rate
+        self.rate = calculateRate(meterType:type)
         self.consumption = consumption
     }
 
@@ -65,6 +65,11 @@ class ElectricMeter{
             str += i.description 
         }
         return str
+    }
+
+    public func calculateRate(meterType:String)->Double{
+        print("Aca dependiendo del tipo se calcula cual será la tarifa")
+        return 777.77
     }
 
     

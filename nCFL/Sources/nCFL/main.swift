@@ -3,7 +3,7 @@ import Foundation
 //import SwiftyJSON
 
 var u = User(id:1, name:"Bryan", password:"Hola Mundo")
-var m = ElectricMeter(idMeter:1, type:"last", rate:123.2, consumption:212.1)
+var m = ElectricMeter(idMeter:1, type:"last", consumption:212.1)
 var r = Register(idRegister:1, idMeter:1, pending:true, paidAmount:0.0,pendingAmout:1230.21)
 var a = Appeal(idAppeal:1, situation:"Muy caro", attended:false, register:r)
 var c = Client(id:2, name:"C1", password:"p1")
