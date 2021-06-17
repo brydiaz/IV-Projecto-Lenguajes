@@ -38,12 +38,34 @@ print(meters[0].getRate())
 
 
 //Esto es para probar como funciona lo de pagar
-
+/*
 let c:Client = clients[0]
 print(c.checkOwnRegisters())
 c.payPending(meter:c.getMeters()[0], registerID:1)
 print(c.checkOwnRegisters())
-
+*/
 
 //INICIO DEL PROGRAMA
-//control.logIn(clients:clients, agents:agents)
+
+var mainClientUser:Client?
+var mainAgentUser:AgentService?
+
+let (idUser, type):(Int, Int) = control.logIn(clients:clients, agents:agents) // SE VERIFICA EL LOGIN
+
+if type == 1{
+    for c in clients{
+        if c.getId() == idUser{
+            mainClientUser = c
+        }
+    }
+    control.mainClient(client:mainClientUser!, appeals:appeals)
+}else if type == 2{
+    for a in agents{
+        if a.getId() == idUser{
+            mainAgentUser = a
+        }
+    }
+    control.mainAgent(agent:mainAgentUser!, clients:clients, meters:meters,registers:registers, appeals:appeals)
+}else{
+    print("Inicio Erroneo")
+}

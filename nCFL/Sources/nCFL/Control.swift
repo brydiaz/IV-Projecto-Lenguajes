@@ -96,7 +96,7 @@ class Control{
         }
         return registers
     }
-    public func logIn(clients:[Client],agents:[AgentService]){
+    public func logIn(clients:[Client],agents:[AgentService])->(Int, Int){
         print("\nBienvenido al Sistema.\nIdentificate!\n")
         print("ID:")
         let id = Int(readLine()!)
@@ -117,13 +117,51 @@ class Control{
         }
     
         if clientTemp != nil && agentTemp != nil{
-            print("EXISTE UN AGENTE Y UN USUARIO CON EL NOMBRE")
-            print("1. LOGIN COMO USUARIO")
+            print("EXISTE UN AGENTE Y UN USUARIO CON EL ID PREVISTO")
+            print("1. LOGIN COMO USUARIO 2. LOGIN COMO AGENTE")
+            let op = Int(readLine()!)
+            if op == 1{
+                print("LOGIN COMO USUARIO")
+                if clientTemp!.getPassword() == password{
+                    print("Bienvenido ",clientTemp!.getName())
+                    return (clientTemp!.getId(), 1)
+                }else{
+                    print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                    logIn(clients:clients, agents:agents)
+                }
+            }else if op == 2{
+                print("LOGIN COMO AGENTE")
+                if agentTemp!.getPassword() == password{
+                    print("Bienvenido ",agentTemp!.getName())
+                    return (agentTemp!.getId(), 2)
+                }else{
+                    print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                    logIn(clients:clients, agents:agents)
+                }
+                
+            }else{
+                print("OPCION INVALIDA, VUELVE A TRATAR")
+                logIn(clients:clients, agents:agents)
+            }
         }else if clientTemp != nil && agentTemp == nil{
             print("LOGIN COMO USUARIO")
+            if clientTemp!.getPassword() == password{
+                    print("Bienvenido ",clientTemp!.getName())
+                    return (clientTemp!.getId(), 1)
+            }else{
+                print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                logIn(clients:clients, agents:agents)
+            }
 
         }else if clientTemp == nil && agentTemp != nil{
             print("LOGIN COMO AGENTE")
+            if agentTemp!.getPassword() == password{
+                    print("Bienvenido ",agentTemp!.getName())
+                    return (agentTemp!.getId(), 2)
+            }else{
+                print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                logIn(clients:clients, agents:agents)
+            }
         }else{
             print("NO CORRESPONDEN SUS DATOS A NADIE")
             print("1. SALIR 2. REINTENTAR")
@@ -139,8 +177,79 @@ class Control{
            
         }
 
+        return (0, -1)
 
 
+    }
+
+    public func mainClient(client:Client, appeals:[Appeal]){
+        print("\nMenú Cliente\n")
+        print("1. Ver registros de los medidores asociados")
+        print("2. Pagar algún registro pendiende por ID")
+        print("3. Apelar algún registro por ID")
+        print("4. Salir")
+
+        let op = String(readLine()!)
+        if op == "1"{
+            print("\nACA MOSTRARIA LOS REGISTROS")
+            //
+            print("\n")
+            mainClient(client:client, appeals:appeals)
+            
+        }else if op == "2"{
+            print("\nACÁ SE PAGARÍA ALGUN REGISTRO PENDIENTE")
+            //
+            print("\n")
+            mainClient(client:client, appeals:appeals)
+        }else if op == "3"{
+            print("\nACÁ SE HARÍA LAS APELACIONES")
+            //
+            print("\n")
+            mainClient(client:client, appeals:appeals)
+        }else if op == "4"{
+            print("\nGRACIAS POR USAR")
+        }else{
+            print("\nOPCION INVALIDA")
+            mainClient(client:client, appeals:appeals)
+        }
+    }
+
+    public func mainAgent(agent:AgentService,clients:[Client],meters:[ElectricMeter],registers:[Register], appeals:[Appeal]){
+        print("\nMenú agente\n")
+        print("1. Ver registros y medidores")
+        print("2. Ver apelaciones")
+        print("3. Trabajar apelacion por ID")
+        print("4. Arreglar medidor")
+        print("5. Salir")
+
+        let op = String(readLine()!)
+        if op == "1"{
+            print("\nACA MOSTRARIA LOS REGISTROS")
+            //
+            print("\n")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+            
+        }else if op == "2"{
+            print("\nACÁ MOSTRARIA APELACIONES")
+            //
+            print("\n")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        }else if op == "3"{
+            print("\nACÁ SE ARREGLA UNA APELACION POR ID")
+            //
+            print("\n")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        }else if op == "4"{
+            print("\nACÁ SE ARREGLA UN MEDIDOR POR ID")
+            //
+            print("\n")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        }else if op == "5"{
+            print("\nGRACIAS POR USAR")
+        }else{
+            print("\nOPCION INVALIDA")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        }
 
     }
 
