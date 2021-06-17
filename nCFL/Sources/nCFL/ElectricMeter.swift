@@ -12,6 +12,10 @@ class ElectricMeter{
         return "\(idMeter),\(type),\(rate),\(consumption),\n\(self.showRegisters())"
     }
 
+    public init(){
+        
+    }
+
     public init(idMeter:Int, type:String, consumption:Double){
         self.idMeter = idMeter
         self.type = type

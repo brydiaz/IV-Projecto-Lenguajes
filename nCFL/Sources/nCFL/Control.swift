@@ -1,4 +1,5 @@
 import Foundation
+import Glibc
 
 class Control{
 
@@ -97,10 +98,11 @@ class Control{
         return registers
     }
     public func logIn(clients:[Client],agents:[AgentService])->(Int, Int){
+        Glibc.system("clear")
         print("\nBienvenido al Sistema.\nIdentificate!\n")
-        print("ID:")
+        print("ID: ",terminator:"")
         let id = Int(readLine()!)
-        print("PASSWORD: ")
+        print("PASSWORD: ",terminator:"")
         let password = String(readLine()!)
         var clientTemp:Client?
         var agentTemp:AgentService?
@@ -119,6 +121,8 @@ class Control{
         if clientTemp != nil && agentTemp != nil{
             print("EXISTE UN AGENTE Y UN USUARIO CON EL ID PREVISTO")
             print("1. LOGIN COMO USUARIO 2. LOGIN COMO AGENTE")
+            print("ELECCIÓN: ",terminator:"")
+            print("\n")
             let op = Int(readLine()!)
             if op == 1{
                 print("LOGIN COMO USUARIO")
@@ -190,20 +194,50 @@ class Control{
         print("4. Salir")
 
         let op = String(readLine()!)
+
+        // Mostrar los medidores asociados y sus registros
         if op == "1"{
-            print("\nACA MOSTRARIA LOS REGISTROS")
-            //
-            print("\n")
+            print(client.checkOwnRegisters())
             mainClient(client:client, appeals:appeals)
             
+
+        // Pagar la factura de un medidor
         }else if op == "2"{
-            print("\nACÁ SE PAGARÍA ALGUN REGISTRO PENDIENTE")
-            //
+            Glibc.system("clear")
+            print("\nIngrese el ID del medidor a pagar: ",terminator:"")
+            let idMeter = Int(readLine()!)
+
+            print("\nIngrese el ID del registro perteneciente a ese medidor: ",terminator:"")
+            let idRegisterMeter1 = Int(readLine()!)!
+            
+
+            var meterFound = false
+            for i in client.getMeters(){
+                if i.getId() == idMeter{
+                    meterFound = true
+                    client.payPending(meter: i, registerID: idRegisterMeter1)
+                    break
+                }  
+            }
             print("\n")
             mainClient(client:client, appeals:appeals)
+
+
+
+        // Apelaciones
         }else if op == "3"{
-            print("\nACÁ SE HARÍA LAS APELACIONES")
-            //
+            Glibc.system("clear")
+            print("\nIngrese el ID del medidor a apelar: ",terminator:"")
+            let idMeter = Int(readLine()!)!
+
+            print("Ingrese el ID del registro a apelar perteneciente a ese medidor: ",terminator:"")
+            let idRegisterMeter1 = Int(readLine()!)!
+
+
+            // Este objeto retorna una apelación
+            client.appeal(meterId: idMeter, registerId: idRegisterMeter1)
+
+
             print("\n")
             mainClient(client:client, appeals:appeals)
         }else if op == "4"{
