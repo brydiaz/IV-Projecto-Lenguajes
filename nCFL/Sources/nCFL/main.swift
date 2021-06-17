@@ -48,3 +48,7 @@ print(c.checkOwnRegisters())
 c.payPending(meter:c.getMeters()[0], registerID:2)
 print(c.checkOwnRegisters())
 */
+
+//INICIO DEL PROGRAMA
+
+control.logIn(clients:clients, agents:agents)

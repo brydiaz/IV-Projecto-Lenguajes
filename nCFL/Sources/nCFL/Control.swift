@@ -96,5 +96,52 @@ class Control{
         }
         return registers
     }
+    public func logIn(clients:[Client],agents:[AgentService]){
+        print("\nBienvenido al Sistema.\nIdentificate!\n")
+        print("ID:")
+        let id = Int(readLine()!)
+        print("PASSWORD: ")
+        let password = String(readLine()!)
+        var clientTemp:Client?
+        var agentTemp:AgentService?
+
+        for c in clients{
+            if id == c.getId(){
+                clientTemp = c
+            }
+        }
+        for a in agents{
+            if id == a.getId(){
+                agentTemp = a
+            }
+        }
+    
+        if clientTemp != nil && agentTemp != nil{
+            print("EXISTE UN AGENTE Y UN USUARIO CON EL NOMBRE")
+            print("1. LOGIN COMO USUARIO")
+        }else if clientTemp != nil && agentTemp == nil{
+            print("LOGIN COMO USUARIO")
+
+        }else if clientTemp == nil && agentTemp != nil{
+            print("LOGIN COMO AGENTE")
+        }else{
+            print("NO CORRESPONDEN SUS DATOS A NADIE")
+            print("1. SALIR 2. REINTENTAR")
+            let op = Int(readLine()!)
+            if op == 1{
+                //Aca salimos
+            }else if op == 2{
+                logIn(clients:clients, agents:agents)
+            }else{
+                print("OPCION INVALIDA, CIERRE DE PROGRAMA")
+            }
+
+           
+        }
+
+
+
+
+    }
 
 }
