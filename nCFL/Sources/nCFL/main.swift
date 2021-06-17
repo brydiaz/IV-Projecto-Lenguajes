@@ -49,9 +49,3 @@ print(c.checkOwnRegisters())
 //INICIO DEL PROGRAMA
 
 control.logIn(clients:clients, agents:agents)
-=======
-
-
-//var client = clients[0]
-//client.appeal(value:0)
->>>>>>> bb00b11e6d261709257bb51520a7852eb9e15dcd
