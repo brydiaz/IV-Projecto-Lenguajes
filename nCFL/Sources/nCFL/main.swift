@@ -17,19 +17,15 @@ var clients:[Client] = control.getClients(value:clientsJSON, value2:meters)
 
 /*
 var agente01 = agents[0]
-
 agente01.checkRegisters(arrayMeter:meters)
 agente01.checkMeters(arrayMeter:meters)
-
 var a = Appeal(idAppeal:1, situation:"Muy caro", attended:false, register:registers[0])
 appeals.append(a)
 var a2 = Appeal(idAppeal:2, situation:"Muy caro pa", attended:false, register:registers[1])
 appeals.append(a2)
 agente01.checkAppels(arrayAppeals:appeals)
-
 agente01.fixAppeal(appeal:appeals[1])
 agente01.checkAppels(arrayAppeals:appeals)
-
 print(meters[0].getConsumption())
 print(meters[0].getRate())
 agente01.fixMeterCons(meter:meters[0],value:600.00)
@@ -48,3 +44,8 @@ print(c.checkOwnRegisters())
 c.payPending(meter:c.getMeters()[0], registerID:2)
 print(c.checkOwnRegisters())
 */
+
+
+
+//var client = clients[0]
+//client.appeal(value:0)

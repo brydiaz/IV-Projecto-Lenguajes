@@ -4,18 +4,23 @@ class Appeal{
     private var situation:String = ""
     private var attended:Bool = false
     private var register:Register?
+    private var idClient:Int = 0
+    private var clientName:String = ""
 
     var description:String{
         return "\(idAppeal),\(situation),\(attended),\n -Registro Apelado: \(register!.description)\n"
     }
-    public init(idAppeal:Int, situation:String, attended:Bool, register:Register!){
+    public init(idAppeal:Int, situation:String, attended:Bool, register:Register!, idClient:Int, clientName:String ){
 
         self.idAppeal = idAppeal
         self.situation = situation
         self.attended = attended
         self.register = register
+        self.idClient = idClient
+        self.clientName = clientName
 
     }
+
 
     public func getId()->Int{
         return self.idAppeal
@@ -47,6 +52,24 @@ class Appeal{
 
     public func setRegister(value:Register){
         self.register = value
+    }
+
+
+
+    public func setIdClient(value:Int){
+        self.idClient = value
+    }
+
+    public func getIdClient()->Int{
+        return self.idClient
+    }
+
+    public func setClientName(value:String){
+        self.clientName = value
+    }
+
+    public func getClientName()->String{
+        return self.clientName
     }
 
 }

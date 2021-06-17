@@ -34,22 +34,64 @@ class Client:User{
         return str
     }
 
-    public func payPending(meter:ElectricMeter , registerID:Int)-> Void{
-        let amount = meter.calculateAmount(meter:meter, registerID:registerID)
-        if amount != -1.1{
-            //Acá iriría lo de la tarjeta
-            //Sino pasa le dice que no tiene dinero esa tarjeta
-            for i in meter.getRegisters(){
-                if i.getIdRegister() == registerID{
-                    i.setPending(value:false)
-                    i.setPaidAmount(value:amount)
+
+
+    public func payPending(meterID:Int , registerID:Int)-> Void{
+
+        var paid = "Datos no concuerdan, inserte correctamente el ID del medidor y el ID de la factura"
+        // Check meter to pay
+        for i in self.meters{
+            if i.getId() == meterID{
+
+                // Check register of meter to pay
+                let meterRegisters = i.getRegisters()
+                for j in meterRegisters{
+                    if j.getIdRegister() == registerID{
+
+                        // Pay register
+                        if j.getPending() == true{
+                            j.setPending(value:false)
+                            paid = "El recibo ha sido pagado"
+                        }else{
+                            paid = "El recibo ya estaba pagado"
+                        }
+                        break
+                    }
+
+
                 }
+                break
             }
         }
+
+
+        print(paid)
+        
             
     }
 
-    public func appeal(value:Int){
-        print("Yo apelo un recibo")
+    
+    public func appeal(meterId:Int, registerId:Int)-> Appeal{
+
+        let randomId = Int.random(in:1..<30)
+
+        // A cual registro de cual medidor le vamos a apelar?
+        let registerss = meters[meterId].getRegisters()
+
+        // Escribir la situación
+        print("ESCRIBA LA SITUACIÓN A APELAR: ", terminator:"")
+        let situation1 = readLine()!
+
+        let appeal = Appeal(idAppeal:randomId, 
+                            situation: situation1, 
+                            attended:false, 
+                            register: registerss[registerId], 
+                            idClient: super.getId(), 
+                            clientName: super.getName())
+
+        return appeal
+    
+        
     }
 }
+
