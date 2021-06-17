@@ -46,6 +46,8 @@ class AgentService:User{
 
     public func fixMeterCons(meter:ElectricMeter,value:Double) -> Void{
         meter.setConsumption(value:value)
+        let newRate = meter.calculateRate(meterType:meter.getType())
+        meter.setRate(value:newRate)
         print("\n**SE HA ARREGLADO EL CONSUMO DEL MEDIDOR**\n")
         print("ID DEL MEDIDOR: \(meter.getId())")
         print("TIPO: \(meter.getType())")
