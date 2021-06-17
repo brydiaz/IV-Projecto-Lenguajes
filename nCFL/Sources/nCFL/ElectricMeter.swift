@@ -139,6 +139,37 @@ class ElectricMeter{
   
     }
 
+    public func calculateAmount(meter:ElectricMeter, registerID:Int)->Double{
+        
+        for registerX in meter.getRegisters(){
+            if registerX.getIdRegister() == registerID{
+                if registerX.getPending(){
+                    
+                    if meter.getType() == "T-RE"{
+                        if meter.getConsumption() < 30{
+                            return 1984.80
+                        }else if (30<meter.getConsumption() && meter.getConsumption()<200){
+                            return 1984.80 + (meter.getConsumption()-30)*meter.getRate()
+                        }else if (200<meter.getConsumption() && meter.getConsumption()<300){
+                            return 1984.80 + (meter.getConsumption()-30)*66.16+(meter.getConsumption()-200)*meter.getRate()
+                        }else{
+                            return 1984.80 + (meter.getConsumption()-30)*66.16+(meter.getConsumption()-200)*101.53+(meter.getConsumption()-300)*meter.getRate()
+                        }
+                        
+                    }else{
+                        return meter.getConsumption()*meter.getRate()
+                    }
+
+            }else{
+                print("El registro no está pendiente")
+            }
+            }
+        }
+        
+
+        return -1.1
+    }
+
     
 
 }

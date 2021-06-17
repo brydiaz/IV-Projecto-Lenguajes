@@ -56,8 +56,5 @@ class Register {
         self.pendingAmout = value
     }
     
-    public func calculateAmount()->Double{
-        print("Yo calculo las cuentas")
-        return 0.0
-    }
+    
 }

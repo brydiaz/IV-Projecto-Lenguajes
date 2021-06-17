@@ -39,7 +39,12 @@ print(meters[0].getRate())
 
 
 
+
+
+//Esto es para probar como funciona lo de pagar
 /*
-var cliente = clients[1]
-print(cliente.payPending(meterID:3, registerID:6))
+let c:Client = clients[0]
+print(c.checkOwnRegisters())
+c.payPending(meter:c.getMeters()[0], registerID:2)
+print(c.checkOwnRegisters())
 */
