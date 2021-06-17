@@ -20,8 +20,15 @@ class AgentService:User{
         //print("Yo reviso las apelaciones")
     }
 
-    public func fixAppeal(value:Int){
-        print("Yo arreglo una apelacion")
+    //Recibe una apelacion y le cambia el estado de atendido
+    public func fixAppeal(appeal:Appeal) -> Void{
+        appeal.setAttended(value:true)
+        print("\n**SE HA ATENDIDO LA APELACION**\n")
+        print("ID APELACION: \(appeal.getId())")
+        print("SITUACION: \(appeal.getSituation())")
+        print("ATENDIDA: \(appeal.getAttended())")
+        print("ID REGISTRO: \(appeal.getRegister().getIdRegister())\n")
+        //print("Yo arreglo una apelacion")
     }
 
     public func checkMeters(arrayMeter:[ElectricMeter]) -> Void{
@@ -37,7 +44,14 @@ class AgentService:User{
         //print("Yo muestro los medidores")
     }
 
-    public func fixMeterCons(value:Int){
-        print("Yo arreglo el consumo en un medidor")
+    public func fixMeterCons(meter:ElectricMeter,value:Double) -> Void{
+        meter.setConsumption(value:value)
+        print("\n**SE HA ARREGLADO EL CONSUMO DEL MEDIDOR**\n")
+        print("ID DEL MEDIDOR: \(meter.getId())")
+        print("TIPO: \(meter.getType())")
+        print("TARIFA: \(meter.getRate())")
+        print("CONSUMO: \(meter.getConsumption())")
+        meter.showRegisters()   
+        //print("Yo arreglo el consumo en un medidor")
     }
 }
