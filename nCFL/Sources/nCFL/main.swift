@@ -15,7 +15,6 @@ var agents:[AgentService] = control.getAgents(value:agentsJSON)
 var appeals:[Appeal] = []
 var clients:[Client] = control.getClients(value:clientsJSON, value2:meters)
 
-//Para probar metodos AgentService
 /*
 var agente01 = agents[0]
 //agente01.checkRegisters(arrayMeter:meters)
@@ -25,4 +24,10 @@ appeals.append(a)
 var a2 = Appeal(idAppeal:2, situation:"Muy caro pa", attended:false, register:registers[1])
 appeals.append(a2)
 agente01.checkAppels(arrayAppeals:appeals)
+*/
+
+/*
+var cliente = clients[1]
+print(cliente.payPending(meterID:3, registerID:6))
+
 */

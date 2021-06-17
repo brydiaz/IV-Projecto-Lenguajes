@@ -29,13 +29,45 @@ class Client:User{
         var str = " MEDIDORES ASOCIADOS:\n"
         for i in self.meters{
             str += " - "
-            str += i.description 
+            str += i.description
         }
         return str
     }
 
-    public func payPending(value:Int){
-        print("Yo pago los recibos")
+    public func payPending(meterID:Int , registerID:Int)-> Void{
+        var paid = "Datos no concuerdan, inserte correctamente el ID del medidor y el ID de la factura"
+
+        // Check meter to pay
+        for i in self.meters{
+            if i.getId() == meterID{
+
+                // Check register of meter to pay
+                let meterRegisters = i.getRegisters()
+                for j in meterRegisters{
+                    if j.getIdRegister() == registerID{
+
+                        // Pay register
+                        if j.getPending() == true{
+                            
+
+
+
+
+                            paid = "El recibo ha sido pagado"
+                        }else{
+                            paid = "El recibo ya estaba pagado"
+                        }
+                        break
+                    }
+
+
+                }
+                break
+            }
+        }
+        print(paid)
+        
+            
     }
 
     public func appeal(value:Int){
