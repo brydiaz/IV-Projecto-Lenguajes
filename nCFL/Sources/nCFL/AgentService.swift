@@ -14,7 +14,12 @@ class AgentService:User{
             print("---------------------------------\n")
             print("ID APELACION: \(a.getId())")
             print("SITUACION: \(a.getSituation())")
-            print("ATENDIDA: \(a.getAttended())")
+            if a.getAttended() == false{
+                print("ATENDIDA: No")
+
+            }else{
+                print("ATENDIDA: Si")
+            }
             print("ID REGISTRO: \(a.getRegister().getIdRegister())\n")
         }
         //print("Yo reviso las apelaciones")
@@ -26,7 +31,12 @@ class AgentService:User{
         print("\n**SE HA ATENDIDO LA APELACION**\n")
         print("ID APELACION: \(appeal.getId())")
         print("SITUACION: \(appeal.getSituation())")
-        print("ATENDIDA: \(appeal.getAttended())")
+        if appeal.getAttended() == false{
+            print("ATENDIDA: No")
+
+        }else{
+            print("ATENDIDA: Si")
+        }
         print("ID REGISTRO: \(appeal.getRegister().getIdRegister())\n")
         //print("Yo arreglo una apelacion")
     }

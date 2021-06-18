@@ -257,37 +257,88 @@ class Control{
     }
 
     public func mainAgent(agent:AgentService,clients:[Client],meters:[ElectricMeter],registers:[Register], appeals:[Appeal]){
-        print("\nMenú agente\n")
-        print("1. Ver registros y medidores")
-        print("2. Ver apelaciones")
-        print("3. Trabajar apelacion por ID")
-        print("4. Arreglar medidor")
-        print("5. Salir")
+        print("\n**Menú agente**\n")
+        print("1. Ver medidores")
+        print("2. Ver registros")
+        print("3. Ver apelaciones")
+        print("4. Resolver apelacion por ID")
+        print("5. Arreglar medidor por ID")
+        print("6. Salir\n")
+        print("Ingrese una opcion: ")
 
         let op = String(readLine()!)
         if op == "1"{
-            print("\nACA MOSTRARIA LOS REGISTROS")
-            //
+            Glibc.system("clear")
+            //print("\nACA MOSTRARIA LOS MEDIDORES")
+            agent.checkMeters(arrayMeter:meters)
             print("\n")
             mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
             
         }else if op == "2"{
-            print("\nACÁ MOSTRARIA APELACIONES")
-            //
+            Glibc.system("clear")
+            //print("\nACÁ MOSTRARIA LOS REGISTROS")
+            agent.checkRegisters(arrayMeter:meters)
             print("\n")
             mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
         }else if op == "3"{
-            print("\nACÁ SE ARREGLA UNA APELACION POR ID")
-            //
+            Glibc.system("clear")
+            //print("\ACA MOSTRARIA LAS APELACIONES")
+            agent.checkAppels(arrayAppeals:appeals)
             print("\n")
             mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
         }else if op == "4"{
-            print("\nACÁ SE ARREGLA UN MEDIDOR POR ID")
-            //
+            Glibc.system("clear")
+            //print("\nACA SE TRABAJA APELACION POR ID")
+            let lenAppeals = appeals.count
+            if  lenAppeals == 0 {
+                print("\nNO EXISTEN APELACIONES EN EL SISTEMA")
+                print("\n")
+            }else{
+                print("Ingrese el id de la apelacion:")
+                if let appealId = Int(readLine()!){
+                    for a in appeals{
+                        if a.getId() == appealId{
+                            if a.getAttended() == false{
+                                agent.fixAppeal(appeal:a)
+                            }else{
+                                print("\nESTA APELACION YA FUE ATENDIDA")
+                            }
+                        }
+                    }
+                
+                }else{
+                    print("\nINGRESE UN ID")
+                }
+                   
+            }
             print("\n")
             mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        
         }else if op == "5"{
-            print("\nGRACIAS POR USAR")
+            Glibc.system("clear")
+            //print("\nACA SE CAMBIA CONSUMO DE MEDIDOR POR ID")
+            print("Ingrese el id del medidor:")
+            if let meterId = Int(readLine()!){
+                for m in meters{
+                    if m.getId() == meterId{
+                        print("\nIngrese el nuevo consumo:")
+                        if let newConsumption = Double(readLine()!){
+                            agent.fixMeterCons(meter:m,value:newConsumption)
+
+                        }else{
+                            print("INGRESE UN NUEVO CONSUMO")
+                        }
+                    }
+                }
+            
+            }else{
+                print("\nINGRESE UN ID")
+            }
+            
+            print("\n")
+            mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
+        }else if op == "6"{
+            print("\nHA SALIDO DEL SISTEMA")
         }else{
             print("\nOPCION INVALIDA")
             mainAgent(agent:agent,clients:clients,meters:meters,registers:registers, appeals:appeals)
