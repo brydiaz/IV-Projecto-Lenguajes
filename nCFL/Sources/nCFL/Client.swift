@@ -68,7 +68,7 @@ class Client:User{
     }
         
     
-    public func appeal(meterId:Int, registerId:Int)-> Appeal?{
+    public func appeal(meterId:Int, registerId:Int)-> Appeal{
 
         let randomId = Int.random(in:1..<30)
       
@@ -110,7 +110,10 @@ class Client:User{
                 }
             }
         }
-        return nil
+
+        let appeal1 = Appeal()
+
+        return appeal1
         
     }
 }

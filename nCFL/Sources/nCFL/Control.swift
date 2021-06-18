@@ -235,11 +235,19 @@ class Control{
 
 
             // Este objeto retorna una apelación
-            client.appeal(meterId: idMeter, registerId: idRegisterMeter1)
+            var clientAppeal = client.appeal(meterId: idMeter, registerId: idRegisterMeter1)
 
+            // appeals no es mutable, se hace array nuevo y se carga
+            var appealArray = [Appeal]()
+            appealArray.append(contentsOf: appeals)
+            appealArray.append(clientAppeal)
+            
+            
 
             print("\n")
-            mainClient(client:client, appeals:appeals)
+            mainClient(client:client, appeals:appealArray)
+
+
         }else if op == "4"{
             print("\nGRACIAS POR USAR")
         }else{

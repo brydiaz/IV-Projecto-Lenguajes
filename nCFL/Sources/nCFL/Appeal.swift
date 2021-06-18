@@ -10,6 +10,12 @@ class Appeal{
     var description:String{
         return "\(idAppeal),\(situation),\(attended),\n -Registro Apelado: \(register!.description)\n"
     }
+
+
+    init(){
+
+    }
+    
     public init(idAppeal:Int, situation:String, attended:Bool, register:Register!, idClient:Int, clientName:String ){
 
         self.idAppeal = idAppeal
