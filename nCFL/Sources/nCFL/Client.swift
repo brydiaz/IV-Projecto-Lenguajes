@@ -34,6 +34,18 @@ class Client:User{
         return str
     }
 
+    public func showAllRegisters(arrayMeter:[ElectricMeter]){
+        print("\n**MEDIDORES ASOCIADOS AL SISTEMA**\n")
+        for m in arrayMeter {
+            print("---------------------------------\n")
+            print("ID DEL MEDIDOR: \(m.getId())")
+            print("TIPO: \(m.getType())")
+            print("TARIFA: \(m.getRate())")
+            print("CONSUMO: \(m.getConsumption())")
+            m.showRegisters()   
+        }
+    }
+
 
 
     public func payPending(meter:ElectricMeter , registerID:Int)-> Void{
@@ -112,7 +124,6 @@ class Client:User{
         }
 
         let appeal1 = Appeal()
-
         return appeal1
         
     }

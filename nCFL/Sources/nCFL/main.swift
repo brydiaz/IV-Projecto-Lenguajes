@@ -15,56 +15,293 @@ var agents:[AgentService] = control.getAgents(value:agentsJSON)
 var appeals:[Appeal] = []
 var clients:[Client] = control.getClients(value:clientsJSON, value2:meters)
 
-/*
-var agente01 = agents[0]
-agente01.checkRegisters(arrayMeter:meters)
-agente01.checkMeters(arrayMeter:meters)
-var a = Appeal(idAppeal:1, situation:"Muy caro", attended:false, register:registers[0], idClient:1, clientName:"Bryan")
-appeals.append(a)
-var a2 = Appeal(idAppeal:2, situation:"Muy caro pa", attended:false, register:registers[0], idClient:2, clientName:"Josue")
-appeals.append(a2)
-agente01.checkAppels(arrayAppeals:appeals)
-agente01.fixAppeal(appeal:appeals[1])
-agente01.checkAppels(arrayAppeals:appeals)
-print(meters[0].getConsumption())
-print(meters[0].getRate())
-agente01.fixMeterCons(meter:meters[0],value:600.00)
-print(meters[0].getConsumption())
-print(meters[0].getRate())
-*/
-
-
-
-
-//Esto es para probar como funciona lo de pagar
-/*
-let c:Client = clients[0]
-print(c.checkOwnRegisters())
-c.payPending(meter:c.getMeters()[0], registerID:1)
-print(c.checkOwnRegisters())
-*/
-
 //INICIO DEL PROGRAMA
 
-var mainClientUser:Client?
-var mainAgentUser:AgentService?
 
-let (idUser, type):(Int, Int) = control.logIn(clients:clients, agents:agents) // SE VERIFICA EL LOGIN
+var clientTemp:Client?
+var agentTemp:AgentService?
+var client:Client?
+var agent:AgentService?
 
-if type == 1{
-    for c in clients{
-        if c.getId() == idUser{
-            mainClientUser = c
+public func logIn()->(Int, Int){
+
+        print("\nBienvenido al Sistema.\nIdentificate!\n")
+        print("ID: ",terminator:"")
+        let id = Int(readLine()!)
+        print("PASSWORD: ",terminator:"")
+        let password = String(readLine()!)
+        
+
+        for c in clients{
+            if id == c.getId(){
+                clientTemp = c
+            }
         }
-    }
-    control.mainClient(client:mainClientUser!, appeals:appeals)
-}else if type == 2{
-    for a in agents{
-        if a.getId() == idUser{
-            mainAgentUser = a
+        for a in agents{
+            if id == a.getId(){
+                agentTemp = a
+            }
         }
+    
+        if clientTemp != nil && agentTemp != nil{
+            print("EXISTE UN AGENTE Y UN USUARIO CON EL ID PREVISTO")
+            print("1. LOGIN COMO USUARIO 2. LOGIN COMO AGENTE")
+            print("ELECCIÓN: ",terminator:"")
+            print("\n")
+            let op = Int(readLine()!)
+            if op == 1{
+                print("LOGIN COMO USUARIO")
+                if clientTemp!.getPassword() == password{
+                    print("Bienvenido ",clientTemp!.getName())
+                    return (clientTemp!.getId(), 1)
+                }else{
+                    print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                    logIn()
+                }
+            }else if op == 2{
+                print("LOGIN COMO AGENTE")
+                if agentTemp!.getPassword() == password{
+                    print("Bienvenido ",agentTemp!.getName())
+                    return (agentTemp!.getId(), 2)
+                }else{
+                    print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                    logIn()
+                }
+                
+            }else{
+                print("OPCION INVALIDA, VUELVE A TRATAR")
+                logIn()
+            }
+        }else if clientTemp != nil && agentTemp == nil{
+            print("LOGIN COMO USUARIO")
+            if clientTemp!.getPassword() == password{
+                    print("Bienvenido ",clientTemp!.getName())
+                    return (clientTemp!.getId(), 1)
+            }else{
+                print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                logIn()
+            }
+
+        }else if clientTemp == nil && agentTemp != nil{
+            print("LOGIN COMO AGENTE")
+            if agentTemp!.getPassword() == password{
+                    print("Bienvenido ",agentTemp!.getName())
+                    return (agentTemp!.getId(), 2)
+            }else{
+                print("ERROR EN EL PASSWORD, VUELVE A TRATAR")
+                logIn()
+            }
+        }else{
+            print("NO CORRESPONDEN SUS DATOS A NADIE")
+            print("1. SALIR 2. REINTENTAR")
+            let op = Int(readLine()!)
+            if op == 1{
+                //Aca salimos
+            }else if op == 2{
+                logIn()
+            }else{
+                print("OPCION INVALIDA, CIERRE DE PROGRAMA")
+            }
+
+           
+        }
+
+        return (0, -1)
+
+
     }
-    control.mainAgent(agent:mainAgentUser!, clients:clients, meters:meters,registers:registers, appeals:appeals)
-}else{
-    print("Inicio Erroneo")
+
+
+public func mainClient(){
+
+        print("\nMenú Cliente\n")
+        print("1. Ver registros de los medidores asociados")
+        print("2. Pagar algún registro pendiende por ID")
+        print("3. Apelar algún registro por ID")
+        print("4. Salir")
+
+        let op = String(readLine()!)
+
+        // Mostrar los medidores asociados y sus registros
+        if op == "1"{
+            print(client!.showAllRegisters(arrayMeter:client!.getMeters()))
+            mainClient()
+
+        // Pagar la factura de un medidor
+        }else if op == "2"{
+            Glibc.system("clear")
+            print("\nIngrese el ID del medidor a pagar: ",terminator:"")
+            let idMeter = Int(readLine()!)
+
+            print("\nIngrese el ID del registro perteneciente a ese medidor: ",terminator:"")
+            let idRegisterMeter1 = Int(readLine()!)!
+            
+
+            var meterFound = false
+            for i in client!.getMeters(){
+                if i.getId() == idMeter{
+                    meterFound = true
+                    client!.payPending(meter: i, registerID: idRegisterMeter1)
+                    break
+                }  
+            }
+            print("\n")
+            mainClient()
+
+
+
+        // Apelaciones
+        }else if op == "3"{
+            Glibc.system("clear")
+            print("\nIngrese el ID del medidor a apelar: ",terminator:"")
+            let idMeter = Int(readLine()!)!
+
+            print("Ingrese el ID del registro a apelar perteneciente a ese medidor: ",terminator:"")
+            let idRegisterMeter1 = Int(readLine()!)!
+
+
+            // Este objeto retorna una apelación
+            var clientAppeal = client!.appeal(meterId: idMeter, registerId: idRegisterMeter1)
+
+            appeals.append(clientAppeal)
+            
+
+            print("\n")
+            mainClient()
+
+
+        }else if op == "4"{
+            print("\nGRACIAS POR USAR")
+            print(appeals)
+        }else{
+            print("\nOPCION INVALIDA")
+            mainClient()
+        }
+        
+    }
+
+public func mainAgent(){
+
+        print("\n**Menú agente**\n")
+        print("1. Ver medidores")
+        print("2. Ver registros")
+        print("3. Ver apelaciones")
+        print("4. Resolver apelacion por ID")
+        print("5. Arreglar medidor por ID")
+        print("6. Salir\n")
+        print("Ingrese una opcion: ")
+
+        let op = String(readLine()!)
+        if op == "1"{
+            Glibc.system("clear")
+            //print("\nACA MOSTRARIA LOS MEDIDORES")
+            agent!.checkMeters(arrayMeter:meters)
+            print("\n")
+            mainAgent()
+            
+        }else if op == "2"{
+            Glibc.system("clear")
+            //print("\nACÁ MOSTRARIA LOS REGISTROS")
+            agent!.checkRegisters(arrayMeter:meters)
+            print("\n")
+            mainAgent()
+        }else if op == "3"{
+            Glibc.system("clear")
+            //print("\ACA MOSTRARIA LAS APELACIONES")
+            agent!.checkAppels(arrayAppeals:appeals)
+            print("\n")
+            mainAgent()
+        }else if op == "4"{
+            Glibc.system("clear")
+            //print("\nACA SE TRABAJA APELACION POR ID")
+            let lenAppeals = appeals.count
+            if  lenAppeals == 0 {
+                print("\nNO EXISTEN APELACIONES EN EL SISTEMA")
+                print("\n")
+            }else{
+                print("Ingrese el id de la apelacion:")
+                if let appealId = Int(readLine()!){
+                    for a in appeals{
+                        if a.getId() == appealId{
+                            if a.getAttended() == false{
+                                agent!.fixAppeal(appeal:a)
+                            }else{
+                                print("\nESTA APELACION YA FUE ATENDIDA")
+                            }
+                        }
+                    }
+                
+                }else{
+                    print("\nINGRESE UN ID")
+                }
+                   
+            }
+            print("\n")
+            mainAgent()
+        
+        }else if op == "5"{
+            Glibc.system("clear")
+            //print("\nACA SE CAMBIA CONSUMO DE MEDIDOR POR ID")
+            print("Ingrese el id del medidor:")
+            if let meterId = Int(readLine()!){
+                for m in meters{
+                    if m.getId() == meterId{
+                        print("\nIngrese el nuevo consumo:")
+                        if let newConsumption = Double(readLine()!){
+                            agent!.fixMeterCons(meter:m,value:newConsumption)
+
+                        }else{
+                            print("INGRESE UN NUEVO CONSUMO")
+                        }
+                    }
+                }
+            
+            }else{
+                print("\nINGRESE UN ID")
+            }
+            
+            print("\n")
+            mainAgent()
+        }else if op == "6"{
+            print("\nHA SALIDO DEL SISTEMA")
+            
+        }else{
+            print("\nOPCION INVALIDA")
+            mainAgent()
+        }
+       
+    }
+
+
+
+
+func start(){
+
+    let (idUser, type):(Int, Int) = logIn() // SE VERIFICA EL LOGIN
+
+    if type == 1{
+        for c in clients{
+            if c.getId() == idUser{
+                client = c
+            }
+        }
+        mainClient()
+        start()
+    }else if type == 2{
+        for a in agents{
+            if a.getId() == idUser{
+                agent = a
+            }
+        }
+        mainAgent()
+        start()
+    }else{
+        print("Inicio Erroneo")
+        start()
+
+    }
+    
 }
+
+start()
+
