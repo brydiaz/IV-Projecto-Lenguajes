@@ -56,7 +56,8 @@ class Client:User{
         if amount != -1.1{
             
             // Cuanto tiene la tarjeta del cliente
-            let tarjeta = 100000.0
+            let tarjeta = 10_000_000.0
+            print("El monto pagado ha sido: \(amount)")
 
             if amount > tarjeta{
                 paid = "\nEl usuario no tiene fondos suficientes para pagar el registro"

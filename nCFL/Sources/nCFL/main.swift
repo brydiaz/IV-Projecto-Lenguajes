@@ -1,4 +1,4 @@
-
+import Glibc
 import Foundation
 
 let control = Control()
@@ -24,7 +24,7 @@ var client:Client?
 var agent:AgentService?
 
 public func logIn()->(Int, Int){
-
+        Glibc.system("clear")
         print("\nBienvenido al Sistema.\nIdentificate!\n")
         print("ID: ",terminator:"")
         let id = Int(readLine()!)
@@ -48,7 +48,7 @@ public func logIn()->(Int, Int){
             print("1. LOGIN COMO USUARIO 2. LOGIN COMO AGENTE")
             print("ELECCIÓN: ",terminator:"")
             print("\n")
-            let op = Int(readLine()!)
+            let op = Int(readLine()!)   
             if op == 1{
                 print("LOGIN COMO USUARIO")
                 if clientTemp!.getPassword() == password{
