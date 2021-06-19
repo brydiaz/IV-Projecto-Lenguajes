@@ -20,4 +20,4 @@ El usuario cuenta con un menú en la terminal que le permitirá acceder ya sea c
 **Bryan Andrey Díaz Barrientos:** 
 <br> 
 
-**Josué Gerardo Gutiérrez Mora:** 
+**Josué Gerardo Gutiérrez Mora:** https://youtu.be/ZUD7WDfSO_4
