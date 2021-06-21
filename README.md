@@ -14,7 +14,7 @@ El usuario cuenta con un menú en la terminal que le permitirá acceder ya sea c
 
 
 ## :video_camera: Links a los vídeos explicativos de los integrantes del grupo
-**Jose Alexander Artavia Quesada:** 
+**Jose Alexander Artavia Quesada:** https://www.youtube.com/watch?v=vx9BOYNeXhw
 <br>
 
 **Bryan Andrey Díaz Barrientos:**  https://youtu.be/QYds2rqyG6c
