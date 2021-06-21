@@ -17,7 +17,7 @@ El usuario cuenta con un menú en la terminal que le permitirá acceder ya sea c
 **Jose Alexander Artavia Quesada:** 
 <br>
 
-**Bryan Andrey Díaz Barrientos:** 
+**Bryan Andrey Díaz Barrientos:**  https://youtu.be/QYds2rqyG6c
 <br> 
 
 **Josué Gerardo Gutiérrez Mora:** https://youtu.be/ZUD7WDfSO_4
